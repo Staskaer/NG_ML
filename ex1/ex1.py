@@ -10,8 +10,8 @@ if __name__ == '__main__':
     data.insert(0, 'ones', 1)
 
     cols = data.shape[1]
-    x = data.iloc[:, :-1]
-    y = data.iloc[:, cols-1:cols]
+    x = data.iloc[:, :-1]  # 除去最后一列为x
+    y = data.iloc[:, cols-1:cols]  # 最后一列为y
 
     x = np.matrix(x.values)
     y = np.matrix(y.values)
@@ -21,4 +21,5 @@ if __name__ == '__main__':
     iters = 1500
 
     g, cost = gradient_descent(x, y, theta, alpha, iters)
+    # g是theta，cost是代价函数
     print(g)
