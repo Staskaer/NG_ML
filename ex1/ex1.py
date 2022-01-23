@@ -2,6 +2,7 @@
 
 import numpy as np
 import pandas as pd
+from matplotlib import pyplot as plt
 from gradientDescent import gradient_descent
 from plotData import plot_data
 
@@ -23,3 +24,15 @@ if __name__ == '__main__':
     g, cost = gradient_descent(x, y, theta, alpha, iters)
     # g是theta，cost是代价函数
     print(g)
+
+    # 绘制原始和拟合曲线
+    x = np.linspace(data.population.min(), data.population.max(), 100)
+    f = g[0, 0]+g[0, 1]*x
+    fig, ax = plt.subplots(figsize=(12, 8))
+    ax.plot(x, f, 'r', label='prediction')
+    ax.scatter(data.population, data.profit, label='training data')
+    ax.legend(loc=2)
+    ax.set_xlabel('population')
+    ax.set_ylabel('profit')
+    ax.set_title('ml')
+    plt.show()
