@@ -1,9 +1,9 @@
-# ¹éÒ»»¯º¯Êı
+# ???
 
 import numpy as np
 
 
 def feature_normalize(x):
-    u = np.median(x)
+    u = x.mean()
     s = x.max()-x.min()
-    return (x - u)/s
+    return ((x-u)/s)
