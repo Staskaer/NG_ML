@@ -1,7 +1,7 @@
 {
     "python.pythonPath": "D:\\python\\python.exe",
     "python.analysis.extraPaths": [
-        "./ex1"
+        "./ex2"
     ],
     "MicroPython.executeButton": [
         {
