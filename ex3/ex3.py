@@ -1,4 +1,5 @@
 # 实现手写数字识别
+# 本章的重点是梯度的正则化计算、分类器和predict函数
 
 import numpy as np
 from getData import get_data
@@ -23,3 +24,4 @@ if __name__ == "__main__":
 
     y_pred = predict_all(data['X'], all_theta=all_theta)
     print(classification_report(data['y'], y_pred))
+    # print(y_pred)

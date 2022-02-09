@@ -14,8 +14,10 @@ def predict_all(x, all_theta):
     all_theta = np.matrix(all_theta)
 
     h = sigmoid(x*all_theta.T)
+    # 得到5000*10维的数组
 
     h_argmax = np.argmax(h, axis=1)
+    # 计算出哪个置信度最高
 
     h_argmax += 1
     return h_argmax

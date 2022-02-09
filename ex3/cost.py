@@ -1,4 +1,4 @@
-# ´ú¼Ûº¯Êýcost
+# ??????
 import numpy as np
 from sigmoid import sigmoid
 
