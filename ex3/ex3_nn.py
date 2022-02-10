@@ -14,6 +14,7 @@ if __name__ == "__main__":
         np.insert(data['X'], 0, values=np.ones(data['X'].shape[0]), axis=1))
     y = np.matrix(data['y'])
 
+    # 以下就是神经网络前向传播的过程，注意添加偏置项
     a1 = x
     z2 = a1*theta1.T
 
