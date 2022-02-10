@@ -1,5 +1,7 @@
 # 实现手写数字识别
 # 本章的重点是梯度的正则化计算、分类器和predict函数
+# 注意：这不是神经网络，而是多个逻辑回归组成的多分类器
+# 每个分类器只区分是i和不是i的数据，输入和输出都是5000行
 
 import numpy as np
 from getData import get_data
