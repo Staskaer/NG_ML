@@ -34,3 +34,6 @@ if __name__ == '__main__':
     a1, z2, a2, z3, h = forward(X, thetafinal1, thetafinal2)
     y_pred = np.array(np.argmax(h, axis=1) + 1)
     print(classification_report(y_raw, y_pred))
+
+    np.save("theta1", thetafinal1)
+    np.save("theta2", thetafinal2)
