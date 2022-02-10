@@ -12,7 +12,8 @@ import cv2
 
 def predict_number():
     # 这段代码是用opencv实现的绘图窗口
-    # 但是可能由于
+    # 但是可能由于存储数据格式不破匹配，不能正常识别
+    # 按2识别，按1清除
     drawer = Draw()
     predict_theta = PredictTheta()
     while 1:
