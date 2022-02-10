@@ -4,9 +4,28 @@ from get_weight import get_weight
 from sklearn.metrics import classification_report
 from getData import get_data
 from sigmoid import sigmoid
+from cv_theta import PredictTheta
+from cv_mouse import Draw
 import numpy as np
+import cv2
 
-if __name__ == "__main__":
+
+def predict_number():
+    # 这段代码是用opencv实现的绘图窗口
+    # 但是可能由于
+    drawer = Draw()
+    predict_theta = PredictTheta()
+    while 1:
+        key = cv2.waitKey(0)
+        if key == ord('1'):
+            drawer.clear()
+        if key == ord('2'):
+            num = predict_theta.predict(drawer.data)
+            print(num)
+            drawer.put_text(num)
+
+
+def main():
     data = get_data()
     theta1, theta2 = get_weight()
 
@@ -26,3 +45,7 @@ if __name__ == "__main__":
 
     y_pred2 = np.argmax(a3, axis=1)+1
     print(classification_report(y, y_pred2))
+
+
+if __name__ == "__main__":
+    predict_number()
