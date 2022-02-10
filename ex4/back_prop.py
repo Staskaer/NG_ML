@@ -26,19 +26,19 @@ def back_prop(params, input_size, hidden_size, num_labels, x, y, learning_rate):
     delta2 = np.zeros(theta2.shape)
 
     # 计算损失
-    j = cost_reg(theta1, theta2, input_size, hidden_size,
-                 num_labels, x, y, learning_rate)
+    # j = cost_reg(theta1, theta2, input_size, hidden_size,
+    #              num_labels, x, y, learning_rate)
 
-    # for i in range(m):
-    #     first_term = np.multiply(-y[i, :], np.log(h[i, :]))
-    #     second_term = np.multiply((1-y[i, :]), np.log(1-h[i, :]))
-    #     j += np.sum(first_term-second_term)
+    for i in range(m):
+        first_term = np.multiply(-y[i, :], np.log(h[i, :]))
+        second_term = np.multiply((1-y[i, :]), np.log(1-h[i, :]))
+        j += np.sum(first_term-second_term)
 
-    # j = j/m
+    j = j/m
 
-    # j += (float(learning_rate) / (2 * m)) * \
-    #     (np.sum(np.power(theta1[:, 1:], 2)) +
-    #      np.sum(np.power(theta2[:, 1:], 2)))
+    j += (float(learning_rate) / (2 * m)) * \
+        (np.sum(np.power(theta1[:, 1:], 2)) +
+         np.sum(np.power(theta2[:, 1:], 2)))
 
     # 执行反向传播
     for t in range(m):
@@ -49,6 +49,9 @@ def back_prop(params, input_size, hidden_size, num_labels, x, y, learning_rate):
         yt = y[t, :]  # (1,10)
 
         # 这些全是公式
+        # 但是可能有些转置和课上的不太一样
+        # 原因是此处的矩阵的行列和课上的不对应
+        # 如输出结果应为列向量，但是此处是行向量
         d3t = ht-yt  # (1,10)
         z2t = np.insert(z2t, 0, values=np.ones(1))  # (1,26)
         d2t = np.multiply((theta2.T * d3t.T).T,
