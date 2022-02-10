@@ -20,7 +20,7 @@ def get_data():
     encoder = OneHotEncoder(sparse=False)
     y_onehot = encoder.fit_transform(y)
 
-    return (img2, y_onehot)
+    return (img2, y_onehot, y)
 
 
 # ²âÊÔ´úÂë
