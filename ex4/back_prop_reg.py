@@ -24,7 +24,7 @@ def backpropReg(params, input_size, hidden_size, num_labels, X, y, learning_rate
     delta1 = np.zeros(theta1.shape)  # (25, 401)
     delta2 = np.zeros(theta2.shape)  # (10, 26)
 
-    # 计算损失
+    # 计算损失,等同于cost函数
     for i in range(m):
         first_term = np.multiply(-y[i, :], np.log(h[i, :]))
         second_term = np.multiply((1 - y[i, :]), np.log(1 - h[i, :]))
