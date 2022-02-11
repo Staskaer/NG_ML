@@ -39,6 +39,7 @@ def backpropReg(params, input_size, hidden_size, num_labels, X, y, learning_rate
 
     # 反向传播
     for t in range(m):
+        # 将每张图片单独处理，计算出对应的δ（以矩阵方式保存）
         a1t = a1[t, :]  # (1, 401)
         z2t = z2[t, :]  # (1, 25)
         a2t = a2[t, :]  # (1, 26)
