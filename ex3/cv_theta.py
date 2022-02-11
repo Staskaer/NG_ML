@@ -14,6 +14,8 @@ class PredictTheta():
     def predict(self, img):
         # 输入400单位的矩阵，输出评估数字
         img = np.matrix(img)
+        img = img.T
+
         a1 = np.insert(img, 0, 1)
         z2 = a1*self.theta1.T
         a2 = sigmoid(z2)
