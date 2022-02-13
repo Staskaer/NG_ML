@@ -24,4 +24,8 @@ if __name__ == "__main__":
     #linear(x, y, theta, False, (x_val, y_val, x_test, y_test))
 
     # 然后观察多项式拟合
-    ploy_features_main(reg=10, power=10)
+
+    # 这个函数内有两种显示方式
+    # type = 0是显示m-cost图像
+    # type = 1是显示lambda-cost图像
+    ploy_features_main(reg=1000, power=10, type=0)

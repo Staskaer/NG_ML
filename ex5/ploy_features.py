@@ -69,14 +69,42 @@ def plot_learning_curve(x, x_init, y, x_val, y_val, l=0, power=8):
     ax[1].set_ylabel('flow')
 
 
+def find_lambda(x, y, x_val, y_val):
+    l_candidate = [0, 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, 3, 10]
+    training_cost, cv_cost = [], []
+
+    for l in l_candidate:
+        res = linear_regression(x, y, l)
+
+        tc = cost_reg(res.x, x, y, l)
+        cv = cost_reg(res.x, x_val, y_val, l)
+
+        training_cost.append(tc)
+        cv_cost.append(cv)
+
+    # 绘制
+    fig, ax = plt.subplots(figsize=(12, 8))
+    ax.plot(l_candidate, training_cost, label='training')
+    ax.plot(l_candidate, cv_cost, label='cross validation')
+    plt.legend()
+    plt.xlabel('lambda')
+    plt.ylabel('cost')
+    plt.show()
+
+
 # 以下函数是多特征训练和图像绘制的入口函数
 
 
-def ploy_features_main(reg=0, power=8):
+def ploy_features_main(reg=0, power=8, type=0):
     # 入口函数可以控制次数和约束系数
     x, y, x_val, y_val, x_test, y_test = get_data()
 
     x_ploy, x_val_ploy, x_test_ploy = prepare_ploy_data(
         x, x_val, x_test, power=power)
-    plot_learning_curve(x_ploy, x, y, x_val_ploy, y_val, l=reg, power=power)
+
+    if type is 0:
+        plot_learning_curve(x_ploy, x, y, x_val_ploy,
+                            y_val, l=reg, power=power)
+    else:
+        find_lambda(x_ploy, y, x_val_ploy, y_val)
     plt.show()
