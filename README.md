@@ -1,6 +1,7 @@
 # 吴恩达机器学习的课后作业的python实现
+# 以及西瓜书上的课后编程题
 
-##### 主要参照了[黄广海的GitHub项目](https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes)。增加了一些额外的东西来验证机器学习的模型效果。
+##### 吴恩达的部分主要参照了[黄广海的GitHub项目](https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes)。增加了一些额外的东西来验证机器学习的模型效果。
 
 > - [x] ex1：线性回归
 > - [x] ex2：逻辑回归、正则化
@@ -11,3 +12,10 @@
 > - [x] ex7：K-means和PCA（主要成分分析）
 > - [x] ex8：异常检测
 
+##### 西瓜书上的编程练习
+> > 第三章
+> > - [ ] 对数几率回归
+> > - [ ] 线性判别分析
+>
+> > 第四章
+> > - [ ] 决策树
