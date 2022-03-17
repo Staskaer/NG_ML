@@ -20,12 +20,12 @@ def compute_decision_tree(train, test, names, del_name=[], func=compute_gain):
     attr = choose_best_attr(train, names, func=func)
     # 计算最好的属性
     tree[attr] = {}
-    del_name.append(attr)
 
     labels = list(set(train[attr]))
     # 获取当前属性的可能值
 
     for l in labels:
+        del_name.append(attr)
         subtree = compute_decision_tree(
             train[train[attr].isin([l])], test, names, del_name, func)
         tree[attr][l] = subtree
