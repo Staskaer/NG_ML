@@ -11,4 +11,5 @@ if __name__ == "__main__":
     names = ['color', 'root', 'sound', 'texture', 'umbilical', 'feel']
 
     tree = compute_decision_tree(train, test, names)
+    print(tree)
     createPlot(tree)
