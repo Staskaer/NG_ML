@@ -1,7 +1,7 @@
 {
     "python.pythonPath": "D:\\python\\python.exe",
     "python.analysis.extraPaths": [
-        "./ex8"
+        "./machine_learning/chapter 3"
     ],
     "MicroPython.executeButton": [
         {
