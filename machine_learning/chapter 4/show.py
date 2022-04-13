@@ -1,29 +1,29 @@
-# »æÖÆ¾ö²ßÊ÷£¬Ê¹ÓÃÁË»úÆ÷Ñ§Ï°ÊµÕ½ÖĞµÄ´úÂë
+# ç»˜åˆ¶å†³ç­–æ ‘ï¼Œä½¿ç”¨äº†æœºå™¨å­¦ä¹ å®æˆ˜ä¸­çš„ä»£ç 
 
 import matplotlib.pylab as plt
 import matplotlib
 
-# ÄÜ¹»ÏÔÊ¾ÖĞÎÄ
+# èƒ½å¤Ÿæ˜¾ç¤ºä¸­æ–‡
 matplotlib.rcParams['font.sans-serif'] = ['SimHei']
 matplotlib.rcParams['font.serif'] = ['SimHei']
 
-# ·Ö²æ½Úµã£¬Ò²¾ÍÊÇ¾ö²ß½Úµã
+# åˆ†å‰èŠ‚ç‚¹ï¼Œä¹Ÿå°±æ˜¯å†³ç­–èŠ‚ç‚¹
 decisionNode = dict(boxstyle="sawtooth", fc="0.8")
 
-# Ò¶×Ó½Úµã
+# å¶å­èŠ‚ç‚¹
 leafNode = dict(boxstyle="round4", fc="0.8")
 
-# ¼ıÍ·ÑùÊ½
+# ç®­å¤´æ ·å¼
 arrow_args = dict(arrowstyle="<-")
 
 
 def plotNode(nodeTxt, centerPt, parentPt, nodeType):
     # """
-    # »æÖÆÒ»¸ö½Úµã
-    # :param nodeTxt: ÃèÊö¸Ã½ÚµãµÄÎÄ±¾ĞÅÏ¢
-    # :param centerPt: ÎÄ±¾µÄ×ø±ê
-    # :param parentPt: µãµÄ×ø±ê£¬ÕâÀïÒ²ÊÇÖ¸¸¸½ÚµãµÄ×ø±ê
-    # :param nodeType: ½ÚµãÀàĞÍ,·ÖÎªÒ¶×Ó½ÚµãºÍ¾ö²ß½Úµã
+    # ç»˜åˆ¶ä¸€ä¸ªèŠ‚ç‚¹
+    # :param nodeTxt: æè¿°è¯¥èŠ‚ç‚¹çš„æ–‡æœ¬ä¿¡æ¯
+    # :param centerPt: æ–‡æœ¬çš„åæ ‡
+    # :param parentPt: ç‚¹çš„åæ ‡ï¼Œè¿™é‡Œä¹Ÿæ˜¯æŒ‡çˆ¶èŠ‚ç‚¹çš„åæ ‡
+    # :param nodeType: èŠ‚ç‚¹ç±»å‹,åˆ†ä¸ºå¶å­èŠ‚ç‚¹å’Œå†³ç­–èŠ‚ç‚¹
     # :return:
     # """
 
@@ -34,25 +34,25 @@ def plotNode(nodeTxt, centerPt, parentPt, nodeType):
 
 def getNumLeafs(myTree):
     # """
-    # »ñÈ¡Ò¶½ÚµãµÄÊıÄ¿
+    # è·å–å¶èŠ‚ç‚¹çš„æ•°ç›®
     # :param myTree:
     # :return:
     # """
-    # Í³¼ÆÒ¶×Ó½ÚµãµÄ×ÜÊı
+    # ç»Ÿè®¡å¶å­èŠ‚ç‚¹çš„æ€»æ•°
     numLeafs = 0
 
-    # µÃµ½µ±Ç°µÚÒ»¸ökey£¬Ò²¾ÍÊÇ¸ù½Úµã
+    # å¾—åˆ°å½“å‰ç¬¬ä¸€ä¸ªkeyï¼Œä¹Ÿå°±æ˜¯æ ¹èŠ‚ç‚¹
     firstStr = list(myTree.keys())[0]
 
-    # µÃµ½µÚÒ»¸ökey¶ÔÓ¦µÄÄÚÈİ
+    # å¾—åˆ°ç¬¬ä¸€ä¸ªkeyå¯¹åº”çš„å†…å®¹
     secondDict = myTree[firstStr]
 
-    # µİ¹é±éÀúÒ¶×Ó½Úµã
+    # é€’å½’éå†å¶å­èŠ‚ç‚¹
     for key in secondDict.keys():
-        # Èç¹ûkey¶ÔÓ¦µÄÊÇÒ»¸ö×Öµä£¬¾Íµİ¹éµ÷ÓÃ
+        # å¦‚æœkeyå¯¹åº”çš„æ˜¯ä¸€ä¸ªå­—å…¸ï¼Œå°±é€’å½’è°ƒç”¨
         if type(secondDict[key]).__name__ == 'dict':
             numLeafs += getNumLeafs(secondDict[key])
-        # ²»ÊÇµÄ»°£¬ËµÃ÷´ËÊ±ÊÇÒ»¸öÒ¶×Ó½Úµã
+        # ä¸æ˜¯çš„è¯ï¼Œè¯´æ˜æ­¤æ—¶æ˜¯ä¸€ä¸ªå¶å­èŠ‚ç‚¹
         else:
             numLeafs += 1
     return numLeafs
@@ -60,31 +60,31 @@ def getNumLeafs(myTree):
 
 def getTreeDepth(myTree):
     # """
-    # µÃµ½ÊıµÄÉî¶È²ãÊı
+    # å¾—åˆ°æ•°çš„æ·±åº¦å±‚æ•°
     # :param myTree:
     # :return:
     # """
-    # ÓÃÀ´±£´æ×î´ó²ãÊı
+    # ç”¨æ¥ä¿å­˜æœ€å¤§å±‚æ•°
     maxDepth = 0
 
-    # µÃµ½¸ù½Úµã
+    # å¾—åˆ°æ ¹èŠ‚ç‚¹
     firstStr = list(myTree.keys())[0]
 
-    # µÃµ½key¶ÔÓ¦µÄÄÚÈİ
+    # å¾—åˆ°keyå¯¹åº”çš„å†…å®¹
     secondDic = myTree[firstStr]
 
-    # ±éÀúËùÓĞ×Ó½Úµã
+    # éå†æ‰€æœ‰å­èŠ‚ç‚¹
     for key in secondDic.keys():
-        # Èç¹û¸Ã½ÚµãÊÇ×Öµä£¬¾Íµİ¹éµ÷ÓÃ
+        # å¦‚æœè¯¥èŠ‚ç‚¹æ˜¯å­—å…¸ï¼Œå°±é€’å½’è°ƒç”¨
         if type(secondDic[key]).__name__ == 'dict':
-            # ×Ó½ÚµãµÄÉî¶È¼Ó1
+            # å­èŠ‚ç‚¹çš„æ·±åº¦åŠ 1
             thisDepth = 1 + getTreeDepth(secondDic[key])
 
-        # ËµÃ÷´ËÊ±ÊÇÒ¶×Ó½Úµã
+        # è¯´æ˜æ­¤æ—¶æ˜¯å¶å­èŠ‚ç‚¹
         else:
             thisDepth = 1
 
-        # Ìæ»»×î´ó²ãÊı
+        # æ›¿æ¢æœ€å¤§å±‚æ•°
         if thisDepth > maxDepth:
             maxDepth = thisDepth
 
@@ -93,95 +93,95 @@ def getTreeDepth(myTree):
 
 def plotMidText(cntrPt, parentPt, txtString):
     # """
-    # ¼ÆËã³ö¸¸½ÚµãºÍ×Ó½ÚµãµÄÖĞ¼äÎ»ÖÃ£¬Ìî³äĞÅÏ¢
-    # :param cntrPt: ×Ó½Úµã×ø±ê
-    # :param parentPt: ¸¸½Úµã×ø±ê
-    # :param txtString: Ìî³äµÄÎÄ±¾ĞÅÏ¢
+    # è®¡ç®—å‡ºçˆ¶èŠ‚ç‚¹å’Œå­èŠ‚ç‚¹çš„ä¸­é—´ä½ç½®ï¼Œå¡«å……ä¿¡æ¯
+    # :param cntrPt: å­èŠ‚ç‚¹åæ ‡
+    # :param parentPt: çˆ¶èŠ‚ç‚¹åæ ‡
+    # :param txtString: å¡«å……çš„æ–‡æœ¬ä¿¡æ¯
     # :return:
     # """
-    # ¼ÆËãxÖáµÄÖĞ¼äÎ»ÖÃ
+    # è®¡ç®—xè½´çš„ä¸­é—´ä½ç½®
     xMid = (parentPt[0]-cntrPt[0])/2.0 + cntrPt[0]
-    # ¼ÆËãyÖáµÄÖĞ¼äÎ»ÖÃ
+    # è®¡ç®—yè½´çš„ä¸­é—´ä½ç½®
     yMid = (parentPt[1]-cntrPt[1])/2.0 + cntrPt[1]
-    # ½øĞĞ»æÖÆ
+    # è¿›è¡Œç»˜åˆ¶
     createPlot.ax1.text(xMid, yMid, txtString)
 
 
 def plotTree(myTree, parentPt, nodeTxt):
     # """
-    # »æÖÆ³öÊ÷µÄËùÓĞ½Úµã£¬µİ¹é»æÖÆ
-    # :param myTree: Ê÷
-    # :param parentPt: ¸¸½ÚµãµÄ×ø±ê
-    # :param nodeTxt: ½ÚµãµÄÎÄ±¾ĞÅÏ¢
+    # ç»˜åˆ¶å‡ºæ ‘çš„æ‰€æœ‰èŠ‚ç‚¹ï¼Œé€’å½’ç»˜åˆ¶
+    # :param myTree: æ ‘
+    # :param parentPt: çˆ¶èŠ‚ç‚¹çš„åæ ‡
+    # :param nodeTxt: èŠ‚ç‚¹çš„æ–‡æœ¬ä¿¡æ¯
     # :return:
     # """
-    # ¼ÆËãÒ¶×Ó½ÚµãÊı
+    # è®¡ç®—å¶å­èŠ‚ç‚¹æ•°
     numLeafs = getNumLeafs(myTree=myTree)
 
-    # ¼ÆËãÊ÷µÄÉî¶È
+    # è®¡ç®—æ ‘çš„æ·±åº¦
     depth = getTreeDepth(myTree=myTree)
 
-    # µÃµ½¸ù½ÚµãµÄĞÅÏ¢ÄÚÈİ
+    # å¾—åˆ°æ ¹èŠ‚ç‚¹çš„ä¿¡æ¯å†…å®¹
     firstStr = list(myTree.keys())[0]
 
-    # ¼ÆËã³öµ±Ç°¸ù½ÚµãÔÚËùÓĞ×Ó½ÚµãµÄÖĞ¼ä×ø±ê,Ò²¾ÍÊÇµ±Ç°xÖáµÄÆ«ÒÆÁ¿¼ÓÉÏ¼ÆËã³öÀ´µÄ¸ù½ÚµãµÄÖĞĞÄÎ»ÖÃ×÷ÎªxÖá£¨±ÈÈçËµµÚÒ»´Î£º³õÊ¼µÄxÆ«ÒÆÁ¿Îª£º-1/2W,¼ÆËã³öÀ´µÄ¸ù½ÚµãÖĞĞÄÎ»ÖÃÎª£º(1+W)/2W£¬Ïà¼ÓµÃµ½£º1/2£©£¬µ±Ç°yÖáÆ«ÒÆÁ¿×÷ÎªyÖá
+    # è®¡ç®—å‡ºå½“å‰æ ¹èŠ‚ç‚¹åœ¨æ‰€æœ‰å­èŠ‚ç‚¹çš„ä¸­é—´åæ ‡,ä¹Ÿå°±æ˜¯å½“å‰xè½´çš„åç§»é‡åŠ ä¸Šè®¡ç®—å‡ºæ¥çš„æ ¹èŠ‚ç‚¹çš„ä¸­å¿ƒä½ç½®ä½œä¸ºxè½´ï¼ˆæ¯”å¦‚è¯´ç¬¬ä¸€æ¬¡ï¼šåˆå§‹çš„xåç§»é‡ä¸ºï¼š-1/2W,è®¡ç®—å‡ºæ¥çš„æ ¹èŠ‚ç‚¹ä¸­å¿ƒä½ç½®ä¸ºï¼š(1+W)/2Wï¼Œç›¸åŠ å¾—åˆ°ï¼š1/2ï¼‰ï¼Œå½“å‰yè½´åç§»é‡ä½œä¸ºyè½´
     cntrPt = (plotTree.xOff + (1.0 + float(numLeafs)) /
               2.0/plotTree.totalW, plotTree.yOff)
 
-    # »æÖÆ¸Ã½ÚµãÓë¸¸½ÚµãµÄÁªÏµ
+    # ç»˜åˆ¶è¯¥èŠ‚ç‚¹ä¸çˆ¶èŠ‚ç‚¹çš„è”ç³»
     plotMidText(cntrPt, parentPt, nodeTxt)
 
-    # »æÖÆ¸Ã½Úµã
+    # ç»˜åˆ¶è¯¥èŠ‚ç‚¹
     plotNode(firstStr, cntrPt, parentPt, decisionNode)
 
-    # µÃµ½µ±Ç°¸ù½Úµã¶ÔÓ¦µÄ×ÓÊ÷
+    # å¾—åˆ°å½“å‰æ ¹èŠ‚ç‚¹å¯¹åº”çš„å­æ ‘
     secondDict = myTree[firstStr]
 
-    # ¼ÆËã³öĞÂµÄyÖáÆ«ÒÆÁ¿£¬ÏòÏÂÒÆ¶¯1/D£¬Ò²¾ÍÊÇÏÂÒ»²ãµÄ»æÖÆyÖá
+    # è®¡ç®—å‡ºæ–°çš„yè½´åç§»é‡ï¼Œå‘ä¸‹ç§»åŠ¨1/Dï¼Œä¹Ÿå°±æ˜¯ä¸‹ä¸€å±‚çš„ç»˜åˆ¶yè½´
     plotTree.yOff = plotTree.yOff - 1.0/plotTree.totalD
 
-    # Ñ­»·±éÀúËùÓĞµÄkey
+    # å¾ªç¯éå†æ‰€æœ‰çš„key
     for key in secondDict.keys():
-        # Èç¹ûµ±Ç°µÄkeyÊÇ×ÖµäµÄ»°£¬´ú±í»¹ÓĞ×ÓÊ÷£¬Ôòµİ¹é±éÀú
+        # å¦‚æœå½“å‰çš„keyæ˜¯å­—å…¸çš„è¯ï¼Œä»£è¡¨è¿˜æœ‰å­æ ‘ï¼Œåˆ™é€’å½’éå†
         if isinstance(secondDict[key], dict):
             plotTree(secondDict[key], cntrPt, str(key))
         else:
-            # ¼ÆËãĞÂµÄxÖáÆ«ÒÆÁ¿£¬Ò²¾ÍÊÇÏÂ¸öÒ¶×Ó»æÖÆµÄxÖá×ø±êÏòÓÒÒÆ¶¯ÁË1/W
+            # è®¡ç®—æ–°çš„xè½´åç§»é‡ï¼Œä¹Ÿå°±æ˜¯ä¸‹ä¸ªå¶å­ç»˜åˆ¶çš„xè½´åæ ‡å‘å³ç§»åŠ¨äº†1/W
             plotTree.xOff = plotTree.xOff + 1.0/plotTree.totalW
-            # ´ò¿ª×¢ÊÍ¿ÉÒÔ¹Û²ìÒ¶×Ó½ÚµãµÄ×ø±ê±ä»¯
+            # æ‰“å¼€æ³¨é‡Šå¯ä»¥è§‚å¯Ÿå¶å­èŠ‚ç‚¹çš„åæ ‡å˜åŒ–
             # print((plotTree.xOff, plotTree.yOff), secondDict[key])
-            # »æÖÆÒ¶×Ó½Úµã
+            # ç»˜åˆ¶å¶å­èŠ‚ç‚¹
             plotNode(secondDict[key], (plotTree.xOff,
                                        plotTree.yOff), cntrPt, leafNode)
-            # »æÖÆÒ¶×Ó½ÚµãºÍ¸¸½ÚµãµÄÖĞ¼äÁ¬ÏßÄÚÈİ
+            # ç»˜åˆ¶å¶å­èŠ‚ç‚¹å’Œçˆ¶èŠ‚ç‚¹çš„ä¸­é—´è¿çº¿å†…å®¹
             plotMidText((plotTree.xOff, plotTree.yOff), cntrPt, str(key))
 
-    # ·µ»Øµİ¹éÖ®Ç°£¬ĞèÒª½«yÖáµÄÆ«ÒÆÁ¿Ôö¼Ó£¬ÏòÉÏÒÆ¶¯1/D£¬Ò²¾ÍÊÇ·µ»ØÈ¥»æÖÆÉÏÒ»²ãµÄyÖá
+    # è¿”å›é€’å½’ä¹‹å‰ï¼Œéœ€è¦å°†yè½´çš„åç§»é‡å¢åŠ ï¼Œå‘ä¸Šç§»åŠ¨1/Dï¼Œä¹Ÿå°±æ˜¯è¿”å›å»ç»˜åˆ¶ä¸Šä¸€å±‚çš„yè½´
     plotTree.yOff = plotTree.yOff + 1.0/plotTree.totalD
 
 
 def createPlot(inTree):
     # """
-    # ĞèÒª»æÖÆµÄ¾ö²ßÊ÷
-    # :param inTree: ¾ö²ßÊ÷×Öµä
+    # éœ€è¦ç»˜åˆ¶çš„å†³ç­–æ ‘
+    # :param inTree: å†³ç­–æ ‘å­—å…¸
     # :return:
     # """
-    # ´´½¨Ò»¸öÍ¼Ïñ
+    # åˆ›å»ºä¸€ä¸ªå›¾åƒ
     fig = plt.figure(1, facecolor='white')
     fig.clf()
     axprops = dict(xticks=[], yticks=[])
     createPlot.ax1 = plt.subplot(111, frameon=False, **axprops)
-    # ¼ÆËã³ö¾ö²ßÊ÷µÄ×Ü¿í¶È
+    # è®¡ç®—å‡ºå†³ç­–æ ‘çš„æ€»å®½åº¦
     plotTree.totalW = float(getNumLeafs(inTree))
-    # ¼ÆËã³ö¾ö²ßÊ÷µÄ×ÜÉî¶È
+    # è®¡ç®—å‡ºå†³ç­–æ ‘çš„æ€»æ·±åº¦
     plotTree.totalD = float(getTreeDepth(inTree))
-    # ³õÊ¼µÄxÖáÆ«ÒÆÁ¿£¬Ò²¾ÍÊÇ-1/2W£¬Ã¿´ÎÏòÓÒÒÆ¶¯1/W£¬Ò²¾ÍÊÇµÚÒ»¸öÒ¶×Ó½Úµã»æÖÆµÄx×ø±êÎª£º1/2W£¬µÚ¶ş¸ö£º3/2W£¬µÚÈı¸ö£º5/2W£¬×îºóÒ»¸ö£º(W-1)/2W
+    # åˆå§‹çš„xè½´åç§»é‡ï¼Œä¹Ÿå°±æ˜¯-1/2Wï¼Œæ¯æ¬¡å‘å³ç§»åŠ¨1/Wï¼Œä¹Ÿå°±æ˜¯ç¬¬ä¸€ä¸ªå¶å­èŠ‚ç‚¹ç»˜åˆ¶çš„xåæ ‡ä¸ºï¼š1/2Wï¼Œç¬¬äºŒä¸ªï¼š3/2Wï¼Œç¬¬ä¸‰ä¸ªï¼š5/2Wï¼Œæœ€åä¸€ä¸ªï¼š(W-1)/2W
     plotTree.xOff = -0.5/plotTree.totalW
-    # ³õÊ¼µÄyÖáÆ«ÒÆÁ¿£¬Ã¿´ÎÏòÏÂ»òÕßÏòÉÏÒÆ¶¯1/D
+    # åˆå§‹çš„yè½´åç§»é‡ï¼Œæ¯æ¬¡å‘ä¸‹æˆ–è€…å‘ä¸Šç§»åŠ¨1/D
     plotTree.yOff = 1.0
-    # µ÷ÓÃº¯Êı½øĞĞ»æÖÆ½ÚµãÍ¼Ïñ
+    # è°ƒç”¨å‡½æ•°è¿›è¡Œç»˜åˆ¶èŠ‚ç‚¹å›¾åƒ
     plotTree(inTree, (0.5, 1.0), '')
-    # »æÖÆ
+    # ç»˜åˆ¶
     plt.show()
 
 

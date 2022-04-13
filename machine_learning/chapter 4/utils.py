@@ -1,12 +1,12 @@
-# ¼ÆËãĞÅÏ¢ìØ£¬ĞÅÏ¢ÔöÒæ¡¢ÔöÒæÂÊ¡¢»ùÄáÖ¸ÊıµÄº¯Êı
+# è®¡ç®—ä¿¡æ¯ç†µï¼Œä¿¡æ¯å¢ç›Šã€å¢ç›Šç‡ã€åŸºå°¼æŒ‡æ•°çš„å‡½æ•°
 
 import numpy as np
 
 
 def compute_ent(D, a=0):
-    # ¼ÆËãĞÅÏ¢ìØ
-    # pÊÇÀà±ğµÄÕ¼±È
-    # ²ÉÓÃ¼ÆËã³öÃ¿Ò»Àà±ğÊıÁ¿µÄ·½Ê½À´¼ÆËãent
+    # è®¡ç®—ä¿¡æ¯ç†µ
+    # pæ˜¯ç±»åˆ«çš„å æ¯”
+    # é‡‡ç”¨è®¡ç®—å‡ºæ¯ä¸€ç±»åˆ«æ•°é‡çš„æ–¹å¼æ¥è®¡ç®—ent
     total = len(D)
     positive = len(D[D['y'].isin([1])])
     negative = len(D[D['y'].isin([0])])
@@ -21,19 +21,19 @@ def compute_ent(D, a=0):
 
 
 def compute_gain(D, a, Gain_flag=False):
-    # ¼ÆËãĞÅÏ¢ÔöÒæ
+    # è®¡ç®—ä¿¡æ¯å¢ç›Š
     count_all = len(D)
-    a_value_count = len(set(D[a].to_list()))  # ÊôĞÔaµÄÈ¡Öµ·¶Î§
+    a_value_count = len(set(D[a].to_list()))  # å±æ€§açš„å–å€¼èŒƒå›´
     a_type = list(set(D[a].to_list()))
 
     gain = 0
     iv = 0
     for value in range(a_value_count):
-        # ¼ÆËãp*ent(Dv)
+        # è®¡ç®—p*ent(Dv)
         p = len(D[D[a].isin([a_type[value]])])/count_all
         gain += p*compute_ent(D[D[a].isin([a_type[value]])])
         if Gain_flag is True:
-            # ´ËÊ±Ê¹ÓÃÔöÒæÂÊ×÷Îª¼ÆËã×¼Ôò
+            # æ­¤æ—¶ä½¿ç”¨å¢ç›Šç‡ä½œä¸ºè®¡ç®—å‡†åˆ™
             iv += p*np.log2(p)
 
     gain = compute_ent(D)-gain
@@ -44,10 +44,10 @@ def compute_gain(D, a, Gain_flag=False):
 
 
 def compute_gini(D, a):
-    # ¼ÆËã»ùÄáÖ¸Êı
+    # è®¡ç®—åŸºå°¼æŒ‡æ•°
 
     def compute_gini_single(D):
-        # ÓÃÓÚ¼ÆËãÃ¿¸ö»®·ÖÏÂµÄ»ùÄáÖ¸Êı
+        # ç”¨äºè®¡ç®—æ¯ä¸ªåˆ’åˆ†ä¸‹çš„åŸºå°¼æŒ‡æ•°
         total = len(D)
         positive = len(D[D['y'].isin([1])])/total
         negative = len(D[D['y'].isin([0])])/total
@@ -55,12 +55,12 @@ def compute_gini(D, a):
         return gini
 
     count_all = len(D)
-    a_value_count = len(set(D[a].to_list()))  # ÊôĞÔaµÄÈ¡Öµ·¶Î§
+    a_value_count = len(set(D[a].to_list()))  # å±æ€§açš„å–å€¼èŒƒå›´
     a_type = list(set(D[a].to_list()))
 
     gini = 0
     for value in range(a_value_count):
-        # ¼ÆËãp*ent(Dv)
+        # è®¡ç®—p*ent(Dv)
         p = len(D[D[a].isin([a_type[value]])])/count_all
         gini += p*compute_gini_single(D[D[a].isin([a_type[value]])])
     return gini

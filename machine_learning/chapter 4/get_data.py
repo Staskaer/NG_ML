@@ -1,4 +1,4 @@
-# 获取决策树的数据
+# 鑾峰彇鍐崇瓥鏍戠殑鏁版嵁
 import pandas as pd
 
 

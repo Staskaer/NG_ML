@@ -1,4 +1,4 @@
-# ¾ö²ßÊ÷
+# å†³ç­–æ ‘
 
 from get_data import get_data
 from utils import compute_gini, compute_ent, compute_gain

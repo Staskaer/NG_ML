@@ -1,28 +1,28 @@
-# ÊµÏÖ¼ÆËã¾ö²ßÊ÷µÄ¼ÆËãº¯Êı
+# å®ç°è®¡ç®—å†³ç­–æ ‘çš„è®¡ç®—å‡½æ•°
 
 from utils import compute_ent, compute_gain, compute_gini
 from choose import choose_best_attr, judge_equal, compute_major_label, compute_equal_attr
 
 
 def compute_decision_tree(train, test, names, del_name=[], func=compute_gain):
-    # ¼ÆËã¾ö²ßÊ÷£¬¿ÉÒÔÀ©Õ¹³É¼ôÖ¦Ä£Ê½
+    # è®¡ç®—å†³ç­–æ ‘ï¼Œå¯ä»¥æ‰©å±•æˆå‰ªææ¨¡å¼
     tree = {}
     names = [name for name in names if name not in del_name]
 
     if judge_equal(train) is 1:
-        # È«²¿±êÇ©Ò»Ñù£¬Ã»±ØÒªÔÙ·Ö
+        # å…¨éƒ¨æ ‡ç­¾ä¸€æ ·ï¼Œæ²¡å¿…è¦å†åˆ†
         return compute_major_label(train)
 
     if len(train) == 1 or compute_equal_attr(train, del_name):
-        # Ö»Ê£ÏÂÒ»¸ö±êÇ©»òÊôĞÔÈ«²¿Ò»ÖÂ
+        # åªå‰©ä¸‹ä¸€ä¸ªæ ‡ç­¾æˆ–å±æ€§å…¨éƒ¨ä¸€è‡´
         return compute_major_label(train)
 
     attr = choose_best_attr(train, names, func=func)
-    # ¼ÆËã×îºÃµÄÊôĞÔ
+    # è®¡ç®—æœ€å¥½çš„å±æ€§
     tree[attr] = {}
 
     labels = list(set(train[attr]))
-    # »ñÈ¡µ±Ç°ÊôĞÔµÄ¿ÉÄÜÖµ
+    # è·å–å½“å‰å±æ€§çš„å¯èƒ½å€¼
 
     for l in labels:
         del_name.append(attr)
